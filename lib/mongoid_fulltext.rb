@@ -125,6 +125,7 @@ module Mongoid::FullTextSearch
       coll = collection.database[index_name]
       cursors = ngrams.map do |ngram|
         query = {'ngram' => ngram[0]}
+        query['team_id'] = '5151fd257ee6c1cf57000002'
         query.update(map_query_filters options)
         count = coll.find(query).count
         {:ngram => ngram, :count => count, :query => query}
